@@ -953,7 +953,7 @@
     }
     initMatchGame();
     
-    // ==================== 模块3：加减法（完全图形化动画演示） ====================
+    // ==================== 模块3：加减法（完全图形化动画演示 已修复） ====================
     let currentMath = { text: "", answer: 0, a: 0, b: 0, op: '+' };
     let mathScore = 0, mathLock = false;
     
@@ -1015,288 +1015,244 @@
             document.getElementById('mathScore').innerText = mathScore;
             feedbackDiv.innerHTML = '🎉🎉 完美正确！ 🎉🎉';
             flashElement(document.getElementById('mathQuestion'));
-            speakText(`太厉害了！ ${currentMath.text} 等于 ${correctAns}`);
+            speakText(`答对啦！${currentMath.text}等于${correctAns}，你真棒！`);
             const scoreSpan = document.getElementById('mathScore');
             scoreSpan.classList.add('star-burst');
             setTimeout(() => scoreSpan.classList.remove('star-burst'), 500);
-            renderMathQuestion();
-            setTimeout(() => { mathLock = false; }, 600);
+            setTimeout(() => {
+                renderMathQuestion();
+                mathLock = false;
+                feedbackDiv.innerHTML = '✨ 选一选，答对有星星哟！';
+            }, 1500);
         } else {
-            feedbackDiv.innerHTML = `😲 再试试～ ${currentMath.text} 等于几？ 想一想～`;
+            feedbackDiv.innerHTML = `🤔 不对哦，再想想${currentMath.text}等于多少？`;
             flashElement(feedbackDiv);
-            speakText(`不对哦，${currentMath.text} 等于 ${correctAns}，再试试看！`);
+            speakText(`不对哦，${currentMath.text}不等于${selected}，再试试看！`);
         }
     }
     
-    // 完全图形化的动画演示（无数字）
-    let isAnimating = false;
-    function animateArithmetic() {
-        if (isAnimating) return;
-        const { a, b, op, answer } = currentMath;
+    // 加减法动画演示（修复版：添加等号+最终结果）
+    function animateMath() {
         const stage = document.getElementById('animationStage');
         if (!stage) return;
-        isAnimating = true;
         stage.innerHTML = '';
+        const {a, b, op, answer} = currentMath;
+        const randomAnimal = animalIcons[Math.floor(Math.random() * animalIcons.length)];
         
-        // 随机选择一种动物图标
-        const animal = animalIcons[Math.floor(Math.random() * animalIcons.length)];
+        let firstGroup = [];
+        for(let i=0; i<a; i++) {
+            const icon = document.createElement('span');
+            icon.className = 'anim-icon';
+            icon.textContent = randomAnimal;
+            firstGroup.push(icon);
+            stage.appendChild(icon);
+        }
         
-        // 创建主容器
-        const mainWrapper = document.createElement('div');
-        mainWrapper.style.display = 'flex';
-        mainWrapper.style.flexWrap = 'wrap';
-        mainWrapper.style.alignItems = 'center';
-        mainWrapper.style.justifyContent = 'center';
-        mainWrapper.style.gap = '15px';
-        
-        if (op === '+') {
-            // 加法：左边 a 个 + 右边 b 个 = 总共 a+b 个
-            const leftDiv = createIconGroup(animal, a, '左边');
-            const plusSpan = createOperator('+');
-            const rightDiv = createIconGroup(animal, b, '右边');
-            const eqSpan = createOperator('=');
-            const resultDiv = createIconGroup(animal, 0, '结果');
-            resultDiv.style.opacity = '0';
-            resultDiv.style.transition = 'opacity 0.6s';
+        const operator = document.createElement('span');
+        operator.className = 'anim-operator';
+        operator.textContent = op;
+        setTimeout(() => {
+            stage.appendChild(operator);
             
-            mainWrapper.appendChild(leftDiv);
-            mainWrapper.appendChild(plusSpan);
-            mainWrapper.appendChild(rightDiv);
-            mainWrapper.appendChild(eqSpan);
-            mainWrapper.appendChild(resultDiv);
-            stage.appendChild(mainWrapper);
-            
-            // 延迟合并动画
             setTimeout(() => {
-                for (let i = 0; i < a + b; i++) {
-                    const icon = createIcon(animal);
-                    resultDiv.appendChild(icon);
-                }
-                resultDiv.style.opacity = '1';
-                speakText(`${a} 加 ${b} 等于 ${answer}，合并起来一共 ${answer} 个${animal}`);
-            }, 700);
-            setTimeout(() => { isAnimating = false; }, 2200);
-        } 
-        else { // 减法：左边 a 个 - 拿走 b 个 = 剩下 a-b 个
-            const leftDiv = createIconGroup(animal, a, '原来有');
-            const minusSpan = createOperator('-');
-            // 用图标表示“拿走”的数量（带删除线效果）
-            const takeDiv = document.createElement('div');
-            takeDiv.style.display = 'flex';
-            takeDiv.style.flexWrap = 'wrap';
-            takeDiv.style.justifyContent = 'center';
-            takeDiv.style.gap = '6px';
-            takeDiv.style.padding = '8px';
-            takeDiv.style.background = '#ffe0b5';
-            takeDiv.style.borderRadius = '40px';
-            for (let i = 0; i < b; i++) {
-                const icon = document.createElement('span');
-                icon.className = 'anim-icon-removed';
-                icon.textContent = animal;
-                takeDiv.appendChild(icon);
-            }
-            const eqSpan = createOperator('=');
-            const resultDiv = createIconGroup(animal, 0, '剩下');
-            resultDiv.style.opacity = '0';
-            resultDiv.style.transition = 'opacity 0.6s';
-            
-            mainWrapper.appendChild(leftDiv);
-            mainWrapper.appendChild(minusSpan);
-            mainWrapper.appendChild(takeDiv);
-            mainWrapper.appendChild(eqSpan);
-            mainWrapper.appendChild(resultDiv);
-            stage.appendChild(mainWrapper);
-            
-            // 动画：左边图标逐个消失，同时结果出现
-            const leftIcons = leftDiv.children;
-            if (leftIcons.length >= b) {
-                for (let i = 0; i < b; i++) {
-                    if (leftIcons[i]) {
-                        leftIcons[i].style.transition = 'all 0.3s';
-                        leftIcons[i].style.transform = 'scale(0)';
-                        leftIcons[i].style.opacity = '0';
+                if(op === '+') {
+                    for(let i=0; i<b; i++) {
+                        const icon = document.createElement('span');
+                        icon.className = 'anim-icon';
+                        icon.textContent = randomAnimal;
+                        stage.appendChild(icon);
                     }
-                }
-                setTimeout(() => {
-                    for (let i = b; i < a; i++) {
-                        const icon = createIcon(animal);
-                        resultDiv.appendChild(icon);
+                    setTimeout(() => {
+                        const equal = document.createElement('span');
+                        equal.className = 'anim-operator';
+                        equal.textContent = '=';
+                        stage.appendChild(equal);
+
+                        for(let i=0; i<answer; i++) {
+                            const icon = document.createElement('span');
+                            icon.className = 'anim-icon';
+                            icon.textContent = randomAnimal;
+                            stage.appendChild(icon);
+                        }
+
+                        speakText(`${a}加${b}等于${answer}，合起来一共有${answer}个${randomAnimal}！`);
+                        flashElement(stage);
+                    }, 800);
+                } else {
+                    for(let i=0; i<b; i++) {
+                        const icon = firstGroup[i];
+                        setTimeout(() => {
+                            icon.className = 'anim-icon-removed';
+                        }, i * 200);
                     }
-                    resultDiv.style.opacity = '1';
-                    speakText(`${a} 减 ${b} 等于 ${answer}，拿走 ${b} 个，剩下 ${answer} 个${animal}`);
-                }, 500);
-            } else {
-                for (let i = 0; i < a; i++) {
-                    resultDiv.appendChild(createIcon(animal));
+                    setTimeout(() => {
+                        const equal = document.createElement('span');
+                        equal.className = 'anim-operator';
+                        equal.textContent = '=';
+                        stage.appendChild(equal);
+
+                        for(let i=0; i<answer; i++) {
+                            const icon = document.createElement('span');
+                            icon.className = 'anim-icon';
+                            icon.textContent = randomAnimal;
+                            stage.appendChild(icon);
+                        }
+
+                        speakText(`${a}减${b}等于${answer}，拿走${b}个，还剩${answer}个${randomAnimal}！`);
+                        flashElement(stage);
+                    }, b * 200 + 500);
                 }
-                resultDiv.style.opacity = '1';
-                speakText(`${a} 减 ${b} 等于 ${answer}`);
-            }
-            setTimeout(() => { isAnimating = false; }, 2200);
-        }
-        
-        // 辅助函数：创建图标组
-        function createIconGroup(icon, count, label) {
-            const group = document.createElement('div');
-            group.style.display = 'flex';
-            group.style.flexWrap = 'wrap';
-            group.style.justifyContent = 'center';
-            group.style.gap = '8px';
-            group.style.padding = '8px';
-            group.style.background = '#fff5e6';
-            group.style.borderRadius = '40px';
-            for (let i = 0; i < count; i++) {
-                group.appendChild(createIcon(icon));
-            }
-            return group;
-        }
-        
-        function createIcon(icon) {
-            const span = document.createElement('span');
-            span.className = 'anim-icon';
-            span.textContent = icon;
-            return span;
-        }
-        
-        function createOperator(op) {
-            const div = document.createElement('div');
-            div.className = 'anim-operator';
-            div.textContent = op;
-            return div;
-        }
+            }, 600);
+        }, 800);
     }
     
-    document.getElementById('animateMathBtn')?.addEventListener('click', animateArithmetic);
-    renderMathQuestion();
+    document.getElementById('animateMathBtn')?.addEventListener('click', animateMath);
     
     // ==================== 模块4：奇偶数学习 ====================
-    let currentParityNumber = 3;
-    let parityScore = 0;
-    let parityLock = false;
-    let parityRefreshTimer = null;
-    const parityIconsList = ['🐼', '🐧', '🐨', '🦊', '🐸', '🐻', '🐱', '🐶', '🍎', '⭐', '🌈', '🐥', '🦄'];
+    let parityScore = 0, parityLock = false;
+    let currentParityCount = 0;
+    const parityEmojis = ['🐰', '🐶', '🐱', '🐻', '🐼', '🦊', '🐸', '🐨', '🐮', '🦁'];
     
-    function updatePairAnimation(icon, count) {
-        const pairDiv = document.getElementById('pairAnimation');
-        if (!pairDiv) return;
-        pairDiv.innerHTML = '';
-        if (count === 0) {
-            pairDiv.innerHTML = '<div style="font-size:1.4rem;">✨ 没有小动物啦</div>';
-            return;
-        }
-        const pairs = Math.floor(count / 2);
-        const hasOdd = (count % 2 === 1);
-        for (let i = 0; i < pairs; i++) {
-            const group = document.createElement('div');
-            group.className = 'pair-group';
-            const span1 = document.createElement('span');
-            span1.textContent = icon;
-            const span2 = document.createElement('span');
-            span2.textContent = icon;
-            const label = document.createElement('div');
-            label.className = 'pair-label';
-            label.textContent = '一对';
-            group.appendChild(span1);
-            group.appendChild(span2);
-            group.appendChild(label);
-            pairDiv.appendChild(group);
-        }
-        if (hasOdd) {
-            const group = document.createElement('div');
-            group.className = 'pair-group';
-            const span = document.createElement('span');
-            span.textContent = icon;
-            const label = document.createElement('div');
-            label.className = 'pair-label';
-            label.textContent = '多出一个';
-            group.appendChild(span);
-            group.appendChild(label);
-            pairDiv.appendChild(group);
-        }
-        const summary = document.createElement('div');
-        summary.style.width = '100%';
-        summary.style.marginTop = '12px';
-        summary.style.fontSize = '1.3rem';
-        summary.style.fontWeight = 'bold';
-        summary.style.color = '#b45f2b';
-        if (count % 2 === 0) {
-            summary.innerHTML = '✅ 正好可以两两配对！这是双数（偶数）';
-        } else {
-            summary.innerHTML = '🤔 多出了一个好朋友，没法成对啦！这是单数（奇数）';
-        }
-        pairDiv.appendChild(summary);
+    function generateParityQuestion() {
+        currentParityCount = randomInt(1, 10);
+        return currentParityCount;
     }
     
-    function refreshParityQuestion() {
-        if (parityRefreshTimer) {
-            clearTimeout(parityRefreshTimer);
-            parityRefreshTimer = null;
-        }
-        parityLock = false;
-        currentParityNumber = randomInt(1, 10);
+    function renderParityIcons(count) {
         const container = document.getElementById('parityIcons');
-        const questionDiv = document.getElementById('parityQuestion');
-        if (!container || !questionDiv) return;
+        if (!container) return;
         container.innerHTML = '';
-        const icon = parityIconsList[Math.floor(Math.random() * parityIconsList.length)];
-        for(let i=0; i<currentParityNumber; i++) {
+        const randomEmoji = parityEmojis[Math.floor(Math.random() * parityEmojis.length)];
+        for(let i=0; i<count; i++) {
             const span = document.createElement('span');
             span.className = 'object-emoji';
-            span.textContent = icon;
-            span.addEventListener('click', (e) => {
+            span.textContent = randomEmoji;
+            span.addEventListener('click', () => {
                 flashElement(span);
-                speakText(`这里有 ${currentParityNumber} 个 ${icon}，它是${currentParityNumber % 2 === 0 ? '双数' : '单数'}哦`);
+                speakText(`这里总共有${count}个${randomEmoji}哦`);
             });
             container.appendChild(span);
         }
-        questionDiv.innerHTML = `✨ 这里有几个 ${icon} ？ 是单数还是双数？`;
-        updatePairAnimation(icon, currentParityNumber);
-        const feedbackDiv = document.getElementById('parityFeedback');
-        if (feedbackDiv) feedbackDiv.innerHTML = '🤗 数一数，然后告诉我是单数还是双数~';
+        document.getElementById('parityQuestion').innerHTML = `✨ 这里有${count}个小动物，是单数还是双数？`;
     }
     
-    function handleParityAnswer(type) {
-        if(parityLock) return;
-        const isEven = (currentParityNumber % 2 === 0);
-        const correctType = isEven ? 'even' : 'odd';
-        const feedbackDiv = document.getElementById('parityFeedback');
-        if(type === correctType) {
-            parityLock = true;
-            parityScore++;
-            document.getElementById('parityScore').innerText = parityScore;
-            feedbackDiv.innerHTML = '🎉 太厉害了！ 你答对了！ 🎉';
-            const pairDiv = document.getElementById('pairAnimation');
-            if (pairDiv) {
-                pairDiv.classList.add('highlight');
-                setTimeout(() => pairDiv.classList.remove('highlight'), 500);
-            }
-            flashElement(document.getElementById('parityIcons'));
-            speakText(`正确！ ${currentParityNumber} 是${isEven ? '双数' : '单数'}，你真聪明！`);
-            const scoreSpan = document.getElementById('parityScore');
-            scoreSpan.classList.add('star-burst');
-            setTimeout(() => scoreSpan.classList.remove('star-burst'), 500);
-            if (parityRefreshTimer) clearTimeout(parityRefreshTimer);
-            parityRefreshTimer = setTimeout(() => { 
-                refreshParityQuestion(); 
-                parityRefreshTimer = null;
-            }, 1200);
+    function renderPairAnimation(count) {
+        const container = document.getElementById('pairAnimation');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        const randomEmoji = parityEmojis[Math.floor(Math.random() * parityEmojis.length)];
+        let hasLone = count % 2 !== 0;
+        let totalPairs = Math.floor(count / 2);
+        
+        for(let i=0; i<totalPairs; i++) {
+            const pairGroup = document.createElement('div');
+            pairGroup.className = 'pair-group';
+            
+            const icon1 = document.createElement('span');
+            icon1.textContent = randomEmoji;
+            const icon2 = document.createElement('span');
+            icon2.textContent = randomEmoji;
+            
+            pairGroup.appendChild(icon1);
+            pairGroup.appendChild(icon2);
+            
+            const label = document.createElement('div');
+            label.className = 'pair-label';
+            label.textContent = '一对';
+            pairGroup.appendChild(label);
+            
+            container.appendChild(pairGroup);
+            
+            setTimeout(() => {
+                pairGroup.classList.add('highlight');
+                setTimeout(() => pairGroup.classList.remove('highlight'), 500);
+            }, i * 300);
+        }
+        
+        if(hasLone) {
+            const loneGroup = document.createElement('div');
+            loneGroup.className = 'pair-group highlight';
+            
+            const icon = document.createElement('span');
+            icon.textContent = randomEmoji;
+            loneGroup.appendChild(icon);
+            
+            const label = document.createElement('div');
+            label.className = 'pair-label';
+            label.textContent = '落单';
+            loneGroup.appendChild(label);
+            
+            setTimeout(() => {
+                container.appendChild(loneGroup);
+                speakText('有一个小动物没有好朋友，所以是单数！');
+            }, totalPairs * 300 + 500);
         } else {
-            feedbackDiv.innerHTML = `🤗 再观察一下，${currentParityNumber} 是${isEven ? '双数' : '单数'}，看看下面两两配对的结果吧！`;
-            flashElement(feedbackDiv);
-            speakText(`再试试看，${currentParityNumber} 是${isEven ? '双数' : '单数'}哟，小朋友再数一数。`);
+            setTimeout(() => {
+                speakText('所有小动物都有好朋友，所以是双数！');
+            }, totalPairs * 300 + 500);
         }
     }
     
-    document.querySelectorAll('#moduleParity .parity-btn').forEach(btn => {
-        btn.addEventListener('click', () => handleParityAnswer(btn.getAttribute('data-type')));
+    function handleParityAnswer(selectedType) {
+        if(parityLock) return;
+        parityLock = true;
+        const isEven = currentParityCount % 2 === 0;
+        const isCorrect = (selectedType === 'even' && isEven) || (selectedType === 'odd' && !isEven);
+        const feedbackDiv = document.getElementById('parityFeedback');
+        
+        if(isCorrect) {
+            parityScore++;
+            document.getElementById('parityScore').innerText = parityScore;
+            const typeText = isEven ? '双数（偶数）' : '单数（奇数）';
+            feedbackDiv.innerHTML = `🎉🎉 答对啦！${currentParityCount}是${typeText}！ 🎉🎉`;
+            flashElement(document.getElementById('parityIcons'));
+            speakText(`太棒了！${currentParityCount}是${typeText}，你真聪明！`);
+            setTimeout(() => renderPairAnimation(currentParityCount), 800);
+            setTimeout(() => {
+                refreshParityQuestion();
+                parityLock = false;
+            }, 3000);
+        } else {
+            const correctType = isEven ? '双数（偶数）' : '单数（奇数）';
+            feedbackDiv.innerHTML = `🤔 不对哦，${currentParityCount}其实是${correctType}！`;
+            flashElement(feedbackDiv);
+            speakText(`不对哦，${currentParityCount}不是${selectedType === 'even' ? '双数' : '单数'}，是${correctType}哦！`);
+            setTimeout(() => renderPairAnimation(currentParityCount), 1000);
+            setTimeout(() => {
+                parityLock = false;
+            }, 3000);
+        }
+    }
+    
+    function refreshParityQuestion() {
+        const count = generateParityQuestion();
+        renderParityIcons(count);
+        document.getElementById('pairAnimation').innerHTML = '';
+        document.getElementById('parityFeedback').innerHTML = '🤗 数一数，然后告诉我是单数还是双数~';
+    }
+    
+    document.querySelectorAll('.parity-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.getAttribute('data-type');
+            handleParityAnswer(type);
+        });
     });
+    
     document.getElementById('newParityBtn')?.addEventListener('click', () => {
-        if (parityRefreshTimer) clearTimeout(parityRefreshTimer);
-        refreshParityQuestion();
+        if(!parityLock) {
+            refreshParityQuestion();
+            speakText('来试试新题目吧！');
+        }
     });
+    
     refreshParityQuestion();
     
-    initVoice();
+    window.addEventListener('load', () => {
+        initVoice().catch(err => console.log('语音初始化失败:', err));
+        hideAllModules();
+        mainMenuDiv.style.display = 'block';
+    });
 </script>
 </body>
 </html>
