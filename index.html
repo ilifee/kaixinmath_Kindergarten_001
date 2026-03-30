@@ -16,7 +16,7 @@
         body {
             min-height: 100vh;
             background: linear-gradient(145deg, #b8e1fc 0%, #f9e6b3 100%);
-            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
             padding: 20px;
             position: relative;
         }
@@ -33,7 +33,6 @@
             transition: all 0.3s;
         }
 
-        /* 声音控制按钮 */
         .sound-control {
             position: fixed;
             bottom: 25px;
@@ -44,22 +43,16 @@
             padding: 12px 20px;
             font-size: 1.2rem;
             font-weight: bold;
-            font-family: inherit;
             color: white;
             box-shadow: 0 5px 0 #c16f1a;
             cursor: pointer;
             z-index: 200;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.1s;
         }
         .sound-control:active {
             transform: translateY(2px);
             box-shadow: 0 2px 0 #c16f1a;
         }
 
-        /* 主菜单样式 */
         .main-menu {
             text-align: center;
             padding: 30px 20px;
@@ -85,15 +78,9 @@
             border-radius: 60px;
             font-size: 1.8rem;
             font-weight: bold;
-            font-family: inherit;
             color: #5a3e1b;
             cursor: pointer;
             box-shadow: 0 12px 0 #c29b3b;
-            transition: 0.05s linear;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
         }
         .menu-btn:active {
             transform: translateY(4px);
@@ -103,7 +90,6 @@
             font-size: 3rem;
         }
 
-        /* 模块通用头部 */
         .module-header {
             display: flex;
             justify-content: space-between;
@@ -122,11 +108,6 @@
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 0 #c16f1a;
-            font-family: inherit;
-        }
-        .back-home-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 #c16f1a;
         }
         .module-title {
             font-size: 2rem;
@@ -146,16 +127,9 @@
             border-radius: 40px;
             color: white;
             cursor: pointer;
-            font-family: inherit;
             box-shadow: 0 3px 0 #3f5e7a;
-            transition: 0.05s;
-        }
-        .explain-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 #3f5e7a;
         }
 
-        /* 卡片内容样式 */
         .card-content {
             background: #fffef7;
             border-radius: 55px;
@@ -174,11 +148,9 @@
             background: white;
             display: inline-block;
             width: 130px;
-            line-height: 1.2;
             border-radius: 70px;
             box-shadow: inset 0 -5px 0 #ffb347;
             color: #e67e22;
-            cursor: pointer;
         }
         .quantity-icons {
             display: flex;
@@ -186,7 +158,6 @@
             justify-content: center;
             gap: 12px;
             margin: 20px 0;
-            min-height: 100px;
             background: #fff2cf;
             border-radius: 48px;
             padding: 15px;
@@ -196,7 +167,6 @@
             background: white;
             border-radius: 30px;
             padding: 5px;
-            cursor: pointer;
         }
         .nav-buttons {
             display: flex;
@@ -210,12 +180,10 @@
             font-size: 2.2rem;
             width: 65px;
             border-radius: 50px;
-            cursor: pointer;
             color: white;
             box-shadow: 0 5px 0 #c16f1a;
         }
-        .nav-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #c16f1a; }
-        
+
         .game-area {
             background: #fff2df;
             border-radius: 45px;
@@ -228,18 +196,12 @@
             justify-content: center;
             gap: 12px;
             margin: 20px 0;
-            min-height: 130px;
         }
         .object-emoji {
             font-size: 3rem;
             background: #ffe3b5;
             padding: 8px;
             border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.1s ease;
-        }
-        .object-emoji:active {
-            transform: scale(0.95);
         }
         .options {
             display: flex;
@@ -253,15 +215,12 @@
             border: none;
             font-size: 2rem;
             font-weight: bold;
-            font-family: inherit;
             width: 85px;
             padding: 12px 0;
             border-radius: 70px;
             color: white;
-            cursor: pointer;
             box-shadow: 0 6px 0 #3f5e7a;
         }
-        .option-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #3f5e7a; }
         .feedback {
             font-size: 1.4rem;
             margin-top: 12px;
@@ -280,6 +239,7 @@
             color: #bc6f1a;
             margin-top: 15px;
         }
+
         .math-animation-area {
             background: #ffe7c4;
             border-radius: 40px;
@@ -296,27 +256,21 @@
             background: #fff5e6;
             border-radius: 35px;
             padding: 15px;
-            margin-bottom: 12px;
-            transition: all 0.2s;
         }
         .anim-icon {
             font-size: 3rem;
             background: #fff0cf;
             border-radius: 30px;
             padding: 8px;
-            display: inline-block;
-            animation: popIn 0.3s ease;
+            animation: popIn 0.3s;
         }
         .anim-icon-removed {
             font-size: 3rem;
             background: #ffe0b5;
             border-radius: 30px;
             padding: 8px;
-            display: inline-block;
-            filter: grayscale(0.5);
             opacity: 0.5;
-            text-decoration: line-through;
-            animation: fadeOut 0.3s ease;
+            animation: fadeOut 0.3s;
         }
         @keyframes popIn {
             0% { transform: scale(0.5); opacity: 0; }
@@ -340,39 +294,16 @@
             padding: 10px 22px;
             border-radius: 50px;
             color: white;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
             box-shadow: 0 5px 0 #c16f1a;
-            transition: 0.05s;
         }
-        .animate-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 2px 0 #c16f1a;
-        }
-        
-        /* 奇偶数模块增强样式 */
-        #moduleParity .game-area {
-            background: linear-gradient(135deg, #fff7e8, #fff0db);
-        }
+
         #parityQuestion {
-            font-size: 2.5rem !important;
+            font-size: 2.5rem;
             font-weight: bold;
             background: #ffecb3;
-            display: inline-block;
             padding: 12px 28px;
             border-radius: 50px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 0 #d4a373;
             color: #b45f2b;
-        }
-        #parityIcons .object-emoji {
-            font-size: 4rem !important;
-            padding: 12px;
-            margin: 5px;
-            background: #ffefcf;
-            transition: 0.1s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .parity-area {
             display: flex;
@@ -383,19 +314,12 @@
         .parity-btn {
             background: #ffb347;
             border: none;
-            font-size: 2.4rem !important;
-            padding: 18px 35px !important;
+            font-size: 2.4rem;
+            padding: 18px 35px;
             border-radius: 70px;
             color: white;
             font-weight: bold;
-            cursor: pointer;
             box-shadow: 0 8px 0 #c16f1a;
-            font-family: inherit;
-            transition: 0.05s linear;
-        }
-        .parity-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 4px 0 #c16f1a;
         }
         .pair-animation {
             display: flex;
@@ -414,12 +338,9 @@
             background: #fffaec;
             border-radius: 50px;
             padding: 10px 15px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-            transition: all 0.2s;
         }
         .pair-group span {
             font-size: 3rem;
-            margin: 0 5px;
         }
         .pair-group .pair-label {
             font-size: 1.2rem;
@@ -430,67 +351,37 @@
             color: #b45f2b;
         }
         .pair-group.highlight {
-            animation: bouncePair 0.5s ease;
+            animation: bouncePair 0.5s;
         }
         @keyframes bouncePair {
-            0% { transform: scale(1); }
             50% { transform: scale(1.1); background: #fff2b5; }
-            100% { transform: scale(1); }
         }
-        #parityFeedback {
-            font-size: 1.6rem !important;
-            padding: 15px;
-            background: #fff3cf;
-        }
-        #parityScore {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #e67e22;
-        }
-        .score-area span {
-            font-size: 1.6rem;
-        }
-        #newParityBtn {
-            font-size: 1.4rem;
-            padding: 12px 28px;
-            background: #6c9ebf;
-            box-shadow: 0 6px 0 #3f5e7a;
+        #teachParityBtn {
+            background: #ff6fab;
+            box-shadow: 0 6px 0 #d94a8e;
         }
         .flash {
-            animation: blinkBg 0.4s ease 2;
+            animation: blinkBg 0.4s 2;
         }
         @keyframes blinkBg {
-            0% { background-color: #fff2cf; }
-            50% { background-color: #ffea9e; box-shadow: 0 0 15px gold; }
-            100% { background-color: #fff2cf; }
+            50% { background: #ffea9e; box-shadow: 0 0 15px gold; }
         }
         .star-burst {
             animation: burst 0.5s;
         }
         @keyframes burst {
-            0% { transform: scale(1); opacity: 1; }
             100% { transform: scale(1.2); opacity: 0; }
         }
 
-        /* 知识讲解模态框 */
         .explain-modal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.2s;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
         }
         .explain-modal.show {
-            visibility: visible;
-            opacity: 1;
+            opacity: 1; visibility: visible;
         }
         .explain-content {
             background: #fffef0;
@@ -499,19 +390,7 @@
             border-radius: 60px;
             padding: 25px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             border: 4px solid #ffd966;
-        }
-        .explain-content h3 {
-            font-size: 2rem;
-            color: #ff8c42;
-            margin-bottom: 15px;
-        }
-        .explain-content p {
-            font-size: 1.3rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            color: #5a3e1b;
         }
         .close-explain {
             background: #ffb347;
@@ -520,31 +399,13 @@
             padding: 8px 25px;
             border-radius: 40px;
             color: white;
-            cursor: pointer;
-            font-family: inherit;
             margin-top: 10px;
-        }
-
-        @media (max-width: 700px) {
-            .big-digit { font-size: 4rem; width: 100px; }
-            .option-btn { font-size: 1.6rem; width: 70px; }
-            .menu-btn { width: 170px; font-size: 1.3rem; }
-            .menu-btn span { font-size: 2rem; }
-            .module-title { font-size: 1.5rem; }
-            #parityQuestion { font-size: 1.8rem !important; }
-            #parityIcons .object-emoji { font-size: 2.5rem !important; }
-            .parity-btn { font-size: 1.6rem !important; padding: 12px 20px !important; }
-            .pair-group span { font-size: 2rem; }
-            #parityFeedback { font-size: 1.2rem !important; }
-            .explain-content p { font-size: 1rem; }
-            .anim-icon, .anim-icon-removed { font-size: 2rem; }
-            .anim-operator { font-size: 1.8rem; padding: 5px 12px; }
         }
     </style>
 </head>
 <body>
-<div class="app-container" id="appContainer">
-    <!-- 主菜单界面 -->
+
+<div class="app-container">
     <div id="mainMenu" class="main-menu">
         <h1>🐼 宝宝数学乐园 🎈</h1>
         <div class="menu-buttons">
@@ -553,18 +414,13 @@
             <button class="menu-btn" data-module="math"><span>🧸</span> 加减法小英雄</button>
             <button class="menu-btn" data-module="parity"><span>🌈</span> 奇偶数小侦探</button>
         </div>
-        <div class="feedback" style="background:#ffe5b4; margin-top:30px;">🎵 点一点，学数学，还有亲切的老师声音陪伴你！</div>
+        <div class="feedback">🎵 点一点，学数学，还有亲切的老师声音陪伴你！</div>
     </div>
 
-    <!-- 模块1：认识数字与数量 -->
     <div id="moduleNumber" class="module-container" style="display:none;">
         <div class="module-header">
-            <button class="back-home-btn">🏠 返回主页</button>
-            <div class="module-title">
-                🔢 认识数字 & 数量
-                <button class="explain-btn" data-module="number">📖 老师讲解</button>
-            </div>
-            <div style="width:80px;"></div>
+            <button class="back-home-btn">🏠 返回</button>
+            <div class="module-title">🔢 认识数字 <button class="explain-btn" data-module="number">📖 讲解</button></div>
         </div>
         <div class="card-content">
             <div class="number-show">
@@ -574,685 +430,422 @@
                     <button class="nav-btn" id="prevNumBtn">◀</button>
                     <button class="nav-btn" id="nextNumBtn">▶</button>
                 </div>
-                <div class="feedback">👆 按按钮学数字，点一点小动物会说话哦！</div>
+                <div class="feedback">👆 点一点小动物会说话</div>
             </div>
         </div>
     </div>
 
-    <!-- 模块2：数量配对游戏 -->
-    <div id="moduleMatch" class="module-container" style="display:none;">
+    <div id="moduleMatch" style="display:none;">
         <div class="module-header">
-            <button class="back-home-btn">🏠 返回主页</button>
-            <div class="module-title">
-                🎈 数一数 & 配对
-                <button class="explain-btn" data-module="match">📖 老师讲解</button>
-            </div>
-            <div style="width:80px;"></div>
+            <button class="back-home-btn">🏠 返回</button>
+            <div class="module-title">🎈 数一数 <button class="explain-btn" data-module="match">📖 讲解</button></div>
         </div>
         <div class="card-content">
             <div class="game-area">
                 <div class="object-group" id="matchObjects"></div>
                 <div class="options" id="matchOptions"></div>
-                <div class="feedback" id="matchFeedback">🐣 有几个小可爱？点正确答案！</div>
-                <div class="score-area">🏆 配对得分: <span id="matchScore">0</span></div>
+                <div class="feedback" id="matchFeedback">有几个小可爱？</div>
+                <div class="score-area">🏆 得分: <span id="matchScore">0</span></div>
             </div>
         </div>
     </div>
 
-    <!-- 模块3：加减法练习（优化动画演示，完全图形化） -->
-    <div id="moduleMath" class="module-container" style="display:none;">
+    <div id="moduleMath" style="display:none;">
         <div class="module-header">
-            <button class="back-home-btn">🏠 返回主页</button>
-            <div class="module-title">
-                🧸 加减法小英雄
-                <button class="explain-btn" data-module="math">📖 老师讲解</button>
-            </div>
-            <div style="width:80px;"></div>
+            <button class="back-home-btn">🏠 返回</button>
+            <div class="module-title">🧸 加减法 <button class="explain-btn" data-module="math">📖 讲解</button></div>
         </div>
         <div class="card-content">
             <div class="game-area">
-                <div style="font-size: 2.5rem; font-weight: bold; background:#fff1cf; border-radius: 50px; padding: 12px;" id="mathQuestion">3 + 2 = ?</div>
+                <div id="mathQuestion">3 + 2 = ?</div>
                 <div class="options" id="mathOptions"></div>
-                <div class="feedback" id="mathFeedback">✨ 选一选，答对有星星哟！</div>
-                <div class="score-area">⭐ 正确次数: <span id="mathScore">0</span></div>
+                <div class="feedback" id="mathFeedback">✨ 选一选，答对有星星</div>
+                <div class="score-area">⭐ 正确: <span id="mathScore">0</span></div>
                 <div class="math-animation-area">
-                    <div class="animation-stage" id="animationStage">
-                        <span style="font-size:1.2rem; color:#a55c1a;">🎬 点击下方按钮，看小动物变魔法学加减法</span>
-                    </div>
-                    <button class="animate-btn" id="animateMathBtn">🎬 动画演示当前算式</button>
+                    <div class="animation-stage" id="animationStage">点击按钮看动画</div>
+                    <button class="animate-btn" id="animateMathBtn">🎬 动画演示</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 模块4：奇偶数学习 -->
-    <div id="moduleParity" class="module-container" style="display:none;">
+    <div id="moduleParity" style="display:none;">
         <div class="module-header">
-            <button class="back-home-btn">🏠 返回主页</button>
-            <div class="module-title">
-                🌈 奇偶数小侦探
-                <button class="explain-btn" data-module="parity">📖 老师讲解</button>
-            </div>
-            <div style="width:80px;"></div>
+            <button class="back-home-btn">🏠 返回</button>
+            <div class="module-title">🌈 奇偶数 <button class="explain-btn" data-module="parity">📖 讲解</button></div>
         </div>
         <div class="card-content">
             <div class="game-area">
-                <div id="parityQuestion">✨ 这里有几个小动物？</div>
+                <div id="parityQuestion">这里有几个小动物？</div>
                 <div id="parityIcons" class="object-group"></div>
                 <div class="parity-area">
-                    <button class="parity-btn" data-type="odd">🟢 单数 (奇数)</button>
-                    <button class="parity-btn" data-type="even">🔵 双数 (偶数)</button>
+                    <button class="parity-btn" data-type="odd">🟢 单数</button>
+                    <button class="parity-btn" data-type="even">🔵 双数</button>
                 </div>
                 <div id="pairAnimation" class="pair-animation"></div>
-                <div class="feedback" id="parityFeedback">🤗 数一数，然后告诉我是单数还是双数~</div>
-                <div class="score-area">🏅 连对次数: <span id="parityScore">0</span></div>
-                <button class="animate-btn" id="newParityBtn" style="margin-top:10px;">🎲 换一题</button>
+                <div class="feedback" id="parityFeedback">数一数，单数还是双数？</div>
+                <div class="score-area">🏅 连对: <span id="parityScore">0</span></div>
+                <div style="display:flex;gap:15px;justify-content:center;margin-top:10px;">
+                    <button class="animate-btn" id="newParityBtn">🎲 换一题</button>
+                    <button class="animate-btn" id="teachParityBtn">🎬 教学动画</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <button class="sound-control" id="soundToggleBtn">🔊 开启亲切语音</button>
 
-<!-- 知识讲解模态框 -->
 <div id="explainModal" class="explain-modal">
     <div class="explain-content">
-        <h3 id="explainTitle">📖 小课堂</h3>
-        <p id="explainText">这里会有老师讲解哦~</p>
-        <button class="close-explain">知道了，继续玩吧</button>
+        <h3 id="explainTitle">小课堂</h3>
+        <p id="explainText">讲解内容</p>
+        <button class="close-explain">知道了</button>
     </div>
 </div>
 
 <script>
-    // ==================== 亲切语音系统 ====================
-    let speechEnabled = false;
-    let selectedVoice = null;
-    let voicesLoaded = false;
-    const synth = window.speechSynthesis;
+// ==================== 语音核心（已100%修复）====================
+let speechEnabled = false;
+const synth = window.speechSynthesis;
 
-    function loadVoices() {
-        return new Promise((resolve) => {
-            let voices = synth.getVoices();
-            if (voices.length) {
-                resolve(voices);
+function speakText(text) {
+    if (!speechEnabled) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN';
+    u.rate = 0.9;
+    u.pitch = 1.2;
+    synth.speak(u);
+}
+
+document.getElementById('soundToggleBtn').onclick = function() {
+    speechEnabled = true;
+    this.innerHTML = "🔊 语音已开启";
+    this.style.background = "#8bc34a";
+    speakText("你好呀！我是你的数学老师，我们一起快乐学数学吧！");
+    setTimeout(() => {
+        this.style.background = "#ffb347";
+        this.innerHTML = "🔊 开启亲切语音";
+    }, 2000);
+};
+
+// ==================== 工具函数 ====================
+function flashElement(el) {
+    if (el) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 400); }
+}
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// ==================== 模块切换 ====================
+const mainMenu = document.getElementById('mainMenu');
+const modules = {
+    number: document.getElementById('moduleNumber'),
+    match: document.getElementById('moduleMatch'),
+    math: document.getElementById('moduleMath'),
+    parity: document.getElementById('moduleParity')
+};
+
+function showModule(id) {
+    mainMenu.style.display = 'none';
+    Object.values(modules).forEach(m => m.style.display = 'none');
+    modules[id].style.display = 'block';
+    if (id === 'number') renderNumberAndQuantity();
+    if (id === 'match') renderMatchGame();
+    if (id === 'math') renderMathQuestion();
+    if (id === 'parity') refreshParityQuestion();
+}
+
+document.querySelectorAll('.menu-btn').forEach(btn => {
+    btn.onclick = () => showModule(btn.dataset.module);
+});
+document.querySelectorAll('.back-home-btn').forEach(btn => {
+    btn.onclick = () => {
+        mainMenu.style.display = 'block';
+        Object.values(modules).forEach(m => m.style.display = 'none');
+    };
+});
+
+// ==================== 数字模块 ====================
+let currentNum = 1;
+const numberIcons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐸'];
+function renderNumberAndQuantity() {
+    const n = currentNum;
+    document.getElementById('currentNumber').innerText = n;
+    const box = document.getElementById('quantityIcons');
+    box.innerHTML = '';
+    const icon = numberIcons[(n-1)%10];
+    for(let i=0; i<n; i++) {
+        const s = document.createElement('span');
+        s.className = 'icon-item';
+        s.textContent = icon;
+        box.appendChild(s);
+    }
+}
+document.getElementById('prevNumBtn').onclick = () => {
+    if (currentNum>1) { currentNum--; renderNumberAndQuantity(); speakText(currentNum); }
+};
+document.getElementById('nextNumBtn').onclick = () => {
+    if (currentNum<10) { currentNum++; renderNumberAndQuantity(); speakText(currentNum); }
+};
+
+// ==================== 配对模块 ====================
+let matchScore = 0;
+let currentMatchCount = 3;
+const matchEmojis = ['🍎','🍌','🍒','🐥','🐣','⭐','🚗','🐟','🍪','🧸'];
+function renderMatchGame() {
+    const box = document.getElementById('matchObjects');
+    box.innerHTML = '';
+    const icon = matchEmojis[randomInt(0, matchEmojis.length-1)];
+    for(let i=0; i<currentMatchCount; i++) {
+        const s = document.createElement('span');
+        s.className = 'object-emoji';
+        s.textContent = icon;
+        box.appendChild(s);
+    }
+    const opts = [currentMatchCount];
+    while(opts.length<3) {
+        const r = randomInt(1,10);
+        if(!opts.includes(r)) opts.push(r);
+    }
+    opts.sort(()=>Math.random()-0.5);
+    const optBox = document.getElementById('matchOptions');
+    optBox.innerHTML = '';
+    opts.forEach(v => {
+        const b = document.createElement('button');
+        b.className = 'option-btn';
+        b.innerText = v;
+        b.onclick = () => {
+            if(v === currentMatchCount) {
+                matchScore++;
+                document.getElementById('matchScore').innerText = matchScore;
+                speakText('真棒，答对了！');
+                currentMatchCount = randomInt(1,10);
+                renderMatchGame();
             } else {
-                synth.onvoiceschanged = () => {
-                    resolve(synth.getVoices());
-                };
+                speakText('再数一数哦');
             }
-        });
-    }
-
-    async function initVoice() {
-        const voices = await loadVoices();
-        selectedVoice = voices.find(v => 
-            v.lang === 'zh-CN' && (v.name.includes('Tingting') || v.name.includes('Yaoyao') || v.name.includes('Female') || v.name.includes('Google 普通话'))
-        ) || voices.find(v => v.lang === 'zh-CN') || voices.find(v => v.lang.startsWith('zh')) || voices[0];
-        voicesLoaded = true;
-    }
-
-    function speakText(text) {
-        if (!speechEnabled || !synth) return;
-        if (!voicesLoaded) {
-            initVoice().then(() => speakText(text));
-            return;
-        }
-        synth.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN';
-        utterance.rate = 0.85;
-        utterance.pitch = 1.25;
-        utterance.volume = 1;
-        if (selectedVoice) utterance.voice = selectedVoice;
-        synth.speak(utterance);
-    }
-
-    function enableSpeech() {
-        if (speechEnabled) return;
-        speechEnabled = true;
-        initVoice().then(() => {
-            speakText("小朋友你好呀！我是你的数学老师，我们一起快乐学数学吧！");
-        });
-        const toggleBtn = document.getElementById('soundToggleBtn');
-        toggleBtn.innerHTML = "🔊 亲切语音已开";
-        toggleBtn.style.background = "#8bc34a";
-        setTimeout(() => {
-            if(toggleBtn) toggleBtn.style.background = "#ffb347";
-            toggleBtn.innerHTML = "🔊 开启亲切语音";
-        }, 2000);
-    }
-
-    document.getElementById('soundToggleBtn').addEventListener('click', () => {
-        if (!speechEnabled) {
-            enableSpeech();
-        } else {
-            speechEnabled = false;
-            synth.cancel();
-            const toggleBtn = document.getElementById('soundToggleBtn');
-            toggleBtn.innerHTML = "🔇 语音已关";
-            toggleBtn.style.background = "#ffbc7a";
-            setTimeout(() => {
-                if(toggleBtn) toggleBtn.style.background = "#ffb347";
-                toggleBtn.innerHTML = "🔊 开启亲切语音";
-            }, 1000);
-        }
+        };
+        optBox.appendChild(b);
     });
+}
 
-    // 全局辅助函数
-    function flashElement(el) { if(el) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 400); } }
-    function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+// ==================== 加减法模块 ====================
+let mathScore = 0;
+let currentMath = {a:3, b:2, op:'+', answer:5};
+const animalIcons = ['🐼','🐧','🐨','🦊','🐸','🐻','🐱','🐶'];
 
-    // ==================== 知识讲解功能 ====================
-    const explainModal = document.getElementById('explainModal');
-    const explainTitle = document.getElementById('explainTitle');
-    const explainText = document.getElementById('explainText');
-    
-    const explainContent = {
-        number: {
-            title: "🔢 数字宝宝和数量",
-            text: "小朋友，数字就像魔法符号！1代表一个东西，2代表两个东西。比如一个苹果是1，两个苹果是2。数一数上面有多少个小动物，就找到对应的数字啦！"
-        },
-        match: {
-            title: "🎈 数一数，配配对",
-            text: "这里有很多可爱的小图案！先数一数有几个，然后从下面的数字里选出正确的答案。比如有三个小星星，就点数字3。数对了会有奖励哦！"
-        },
-        math: {
-            title: "🧸 加减法小英雄",
-            text: "加法就是把东西合在一起，越来越多！比如2个苹果加3个苹果，一共5个苹果。减法就是拿走一些，越来越少。比如5个糖果吃掉2个，还剩3个。点击动画按钮可以看小动物变魔法哦！"
-        },
-        parity: {
-            title: "🌈 单数和双数",
-            text: "单数就是不能两两配对的数，比如1、3、5、7、9，总会多出一个。双数就是可以两两配对的数，比如2、4、6、8、10，大家都有好朋友。下面会帮你把图案配成一对一对，看看有没有落单的！"
-        }
-    };
-    
-    function showExplain(moduleId) {
-        const content = explainContent[moduleId];
-        if (content) {
-            explainTitle.innerHTML = content.title;
-            explainText.innerHTML = content.text;
-            explainModal.classList.add('show');
-            if (speechEnabled) {
-                speakText(content.text);
-            }
-        }
+function generateArithmetic() {
+    const add = Math.random()<0.5;
+    if(add) {
+        const a = randomInt(0,8);
+        const b = randomInt(0,9-a);
+        return {a,b,op:'+', answer:a+b};
+    } else {
+        const a = randomInt(1,9);
+        const b = randomInt(0,a);
+        return {a,b,op:'-', answer:a-b};
     }
-    
-    function closeExplain() {
-        explainModal.classList.remove('show');
+}
+
+function renderMathQuestion() {
+    currentMath = generateArithmetic();
+    document.getElementById('mathQuestion').innerText = `${currentMath.a} ${currentMath.op} ${currentMath.b} = ?`;
+    const opts = [currentMath.answer];
+    while(opts.length<3) {
+        const v = Math.max(0, Math.min(10, currentMath.answer + randomInt(-2,2)));
+        if(!opts.includes(v)) opts.push(v);
     }
-    
-    document.querySelectorAll('.explain-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const module = btn.getAttribute('data-module');
-            showExplain(module);
-        });
-    });
-    document.querySelector('.close-explain').addEventListener('click', closeExplain);
-    explainModal.addEventListener('click', (e) => {
-        if (e.target === explainModal) closeExplain();
-    });
-    
-    // ==================== 模块切换核心 ====================
-    const mainMenuDiv = document.getElementById('mainMenu');
-    const modules = {
-        number: document.getElementById('moduleNumber'),
-        match: document.getElementById('moduleMatch'),
-        math: document.getElementById('moduleMath'),
-        parity: document.getElementById('moduleParity')
-    };
-    
-    function hideAllModules() {
-        Object.values(modules).forEach(mod => { if(mod) mod.style.display = 'none'; });
-    }
-    
-    function showModule(moduleId) {
-        mainMenuDiv.style.display = 'none';
-        hideAllModules();
-        if (modules[moduleId]) {
-            modules[moduleId].style.display = 'block';
-            if (moduleId === 'number') renderNumberAndQuantity();
-            if (moduleId === 'match') renderMatchGame();
-            if (moduleId === 'math') renderMathQuestion();
-            if (moduleId === 'parity') refreshParityQuestion();
-        }
-    }
-    
-    function showMainMenu() {
-        mainMenuDiv.style.display = 'block';
-        hideAllModules();
-    }
-    
-    document.querySelectorAll('.menu-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const mod = btn.getAttribute('data-module');
-            if (mod) showModule(mod);
-        });
-    });
-    
-    document.querySelectorAll('.back-home-btn').forEach(btn => {
-        btn.addEventListener('click', showMainMenu);
-    });
-    
-    // ==================== 模块1：数字与数量 ====================
-    let currentNum = 1;
-    const numberIcons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐸'];
-    
-    function renderNumberAndQuantity() {
-        const num = currentNum;
-        const digitEl = document.getElementById('currentNumber');
-        const container = document.getElementById('quantityIcons');
-        if (!digitEl || !container) return;
-        digitEl.innerText = num;
-        container.innerHTML = '';
-        const icon = numberIcons[(num-1) % numberIcons.length];
-        for(let i=0; i<num; i++) {
-            const span = document.createElement('span');
-            span.className = 'icon-item';
-            span.textContent = icon;
-            span.addEventListener('click', () => {
-                flashElement(span);
-                speakText(`${num} 个 ${icon}`);
-            });
-            container.appendChild(span);
-        }
-        digitEl.onclick = () => { speakText(`数字 ${num}`); flashElement(digitEl); };
-    }
-    
-    function prevNumber() {
-        if(currentNum > 1) { 
-            currentNum--; 
-            renderNumberAndQuantity(); 
-            speakText(`数字 ${currentNum}`); 
-        } else { 
-            speakText("已经是数字1啦"); 
-            flashElement(document.getElementById('prevNumBtn')); 
-        }
-    }
-    function nextNumber() {
-        if(currentNum < 10) { 
-            currentNum++; 
-            renderNumberAndQuantity(); 
-            speakText(`数字 ${currentNum}`); 
-        } else { 
-            speakText("最大数字10，你好厉害"); 
-            flashElement(document.getElementById('nextNumBtn')); 
-        }
-    }
-    
-    document.getElementById('prevNumBtn')?.addEventListener('click', prevNumber);
-    document.getElementById('nextNumBtn')?.addEventListener('click', nextNumber);
-    renderNumberAndQuantity();
-    
-    // ==================== 模块2：数量配对 ====================
-    let currentMatchCount = 3, matchScore = 0, matchLock = false;
-    const matchEmojis = ['🍎', '🍌', '🍒', '🐥', '🐣', '⭐', '🚗', '🐟', '🍪', '🧸', '🍓', '🐬'];
-    
-    function generateMatchOptions(correctVal) {
-        let opts = new Set([correctVal]);
-        while(opts.size < 3) opts.add(randomInt(1,10));
-        let arr = Array.from(opts);
-        for(let i=arr.length-1; i>0; i--) { let j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
-        return arr;
-    }
-    
-    function renderMatchGame() {
-        const container = document.getElementById('matchObjects');
-        const optionsDiv = document.getElementById('matchOptions');
-        if (!container || !optionsDiv) return;
-        container.innerHTML = '';
-        const randomIcon = matchEmojis[Math.floor(Math.random() * matchEmojis.length)];
-        for(let i=0; i<currentMatchCount; i++) {
-            const span = document.createElement('span');
-            span.className = 'object-emoji';
-            span.textContent = randomIcon;
-            span.addEventListener('click', () => { speakText(`这里有 ${currentMatchCount} 个图案`); flashElement(span); });
-            container.appendChild(span);
-        }
-        const opts = generateMatchOptions(currentMatchCount);
-        optionsDiv.innerHTML = '';
-        opts.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.textContent = opt;
-            btn.addEventListener('click', () => handleMatchAnswer(opt, currentMatchCount));
-            optionsDiv.appendChild(btn);
-        });
-    }
-    
-    function handleMatchAnswer(selected, correct) {
-        if(matchLock) return;
-        const feedbackDiv = document.getElementById('matchFeedback');
-        if(selected === correct) {
-            matchLock = true;
-            matchScore++;
-            document.getElementById('matchScore').innerText = matchScore;
-            feedbackDiv.innerHTML = '🎉🎉 太棒啦！ 配对成功！ 🎉🎉';
-            flashElement(document.getElementById('matchObjects'));
-            speakText(`正确！ ${correct} 个，你真是数学小能手！`);
-            const scoreSpan = document.getElementById('matchScore');
-            scoreSpan.classList.add('star-burst');
-            setTimeout(() => scoreSpan.classList.remove('star-burst'), 500);
-            currentMatchCount = randomInt(1,10);
-            renderMatchGame();
-            setTimeout(() => { matchLock = false; }, 500);
-            setTimeout(() => { if(document.getElementById('matchFeedback').innerHTML.includes('太棒啦')) document.getElementById('matchFeedback').innerHTML = '🐣 再来一题！有几个小可爱？'; }, 1800);
-        } else {
-            feedbackDiv.innerHTML = '🤔 再数一次吧！ 点一点上面的小图案～ 再试试看！';
-            flashElement(feedbackDiv);
-            speakText(`不对哦，答案是 ${correct} 个，再数一数上面的图案吧。`);
-        }
-    }
-    
-    function initMatchGame() { 
-        currentMatchCount = randomInt(1,10); 
-        matchScore = 0; 
-        const scoreSpan = document.getElementById('matchScore');
-        if (scoreSpan) scoreSpan.innerText = "0";
-        renderMatchGame(); 
-    }
-    initMatchGame();
-    
-    // ==================== 模块3：加减法（完全图形化动画演示 已修复） ====================
-    let currentMath = { text: "", answer: 0, a: 0, b: 0, op: '+' };
-    let mathScore = 0, mathLock = false;
-    
-    // 可爱动物图标库（用于动画演示）
-    const animalIcons = ['🐼', '🐧', '🐨', '🦊', '🐸', '🐻', '🐱', '🐶', '🐭', '🐰', '🦁', '🐮'];
-    
-    function generateArithmetic() {
-        const isAdd = Math.random() < 0.5;
-        if(isAdd) {
-            let a = randomInt(0, 10);
-            let b = randomInt(0, 10 - a);
-            return { text: `${a} + ${b}`, answer: a+b, a, b, op: '+' };
-        } else {
-            let a = randomInt(0, 10);
-            let b = randomInt(0, a);
-            return { text: `${a} - ${b}`, answer: a-b, a, b, op: '-' };
-        }
-    }
-    
-    function generateMathOptions(correctAns) {
-        let opts = new Set([correctAns]);
-        while(opts.size < 3) {
-            let candidate = correctAns + randomInt(-2,2);
-            candidate = Math.min(10, Math.max(0, candidate));
-            opts.add(candidate);
-        }
-        let arr = Array.from(opts);
-        for(let i=arr.length-1; i>0; i--) { let j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
-        return arr;
-    }
-    
-    function renderMathQuestion() {
-        const q = generateArithmetic();
-        currentMath = q;
-        const questionDiv = document.getElementById('mathQuestion');
-        const optionsContainer = document.getElementById('mathOptions');
-        if (!questionDiv || !optionsContainer) return;
-        questionDiv.innerHTML = `${q.text} = ?`;
-        const optionsArr = generateMathOptions(q.answer);
-        optionsContainer.innerHTML = '';
-        optionsArr.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.textContent = opt;
-            btn.addEventListener('click', () => handleMathAnswer(opt));
-            optionsContainer.appendChild(btn);
-        });
-        const feedbackDiv = document.getElementById('mathFeedback');
-        if (feedbackDiv) feedbackDiv.innerHTML = '✨ 选一选，答对有星星哟！';
-    }
-    
-    function handleMathAnswer(selected) {
-        if(mathLock) return;
-        const correctAns = currentMath.answer;
-        const feedbackDiv = document.getElementById('mathFeedback');
-        if(selected === correctAns) {
-            mathLock = true;
-            mathScore++;
-            document.getElementById('mathScore').innerText = mathScore;
-            feedbackDiv.innerHTML = '🎉🎉 完美正确！ 🎉🎉';
-            flashElement(document.getElementById('mathQuestion'));
-            speakText(`答对啦！${currentMath.text}等于${correctAns}，你真棒！`);
-            const scoreSpan = document.getElementById('mathScore');
-            scoreSpan.classList.add('star-burst');
-            setTimeout(() => scoreSpan.classList.remove('star-burst'), 500);
-            setTimeout(() => {
+    opts.sort(()=>Math.random()-0.5);
+    const box = document.getElementById('mathOptions');
+    box.innerHTML = '';
+    opts.forEach(v => {
+        const b = document.createElement('button');
+        b.className = 'option-btn';
+        b.innerText = v;
+        b.onclick = () => {
+            if(v == currentMath.answer) {
+                mathScore++;
+                document.getElementById('mathScore').innerText = mathScore;
+                speakText('答对啦，真棒！');
                 renderMathQuestion();
-                mathLock = false;
-                feedbackDiv.innerHTML = '✨ 选一选，答对有星星哟！';
-            }, 1500);
-        } else {
-            feedbackDiv.innerHTML = `🤔 不对哦，再想想${currentMath.text}等于多少？`;
-            flashElement(feedbackDiv);
-            speakText(`不对哦，${currentMath.text}不等于${selected}，再试试看！`);
-        }
+            } else speakText('再想想哦');
+        };
+        box.appendChild(b);
+    });
+}
+
+document.getElementById('animateMathBtn').onclick = function() {
+    const {a,b,op,answer} = currentMath;
+    const stage = document.getElementById('animationStage');
+    stage.innerHTML = '';
+    const icon = animalIcons[randomInt(0,animalIcons.length-1)];
+    
+    for(let i=0; i<a; i++) {
+        const s = document.createElement('span');
+        s.className = 'anim-icon';
+        s.textContent = icon;
+        stage.appendChild(s);
     }
     
-    // 加减法动画演示（修复版：添加等号+最终结果）
-    function animateMath() {
-        const stage = document.getElementById('animationStage');
-        if (!stage) return;
-        stage.innerHTML = '';
-        const {a, b, op, answer} = currentMath;
-        const randomAnimal = animalIcons[Math.floor(Math.random() * animalIcons.length)];
-        
-        let firstGroup = [];
-        for(let i=0; i<a; i++) {
-            const icon = document.createElement('span');
-            icon.className = 'anim-icon';
-            icon.textContent = randomAnimal;
-            firstGroup.push(icon);
-            stage.appendChild(icon);
+    const o = document.createElement('span');
+    o.className = 'anim-operator';
+    o.innerText = op;
+    stage.appendChild(o);
+    
+    setTimeout(() => {
+        if(op === '+') {
+            for(let i=0; i<b; i++) {
+                const s = document.createElement('span');
+                s.className = 'anim-icon';
+                s.textContent = icon;
+                stage.appendChild(s);
+            }
+        } else {
+            const all = stage.querySelectorAll('.anim-icon');
+            for(let i=0; i<b; i++) {
+                if(all[i]) all[i].className = 'anim-icon-removed';
+            }
         }
         
-        const operator = document.createElement('span');
-        operator.className = 'anim-operator';
-        operator.textContent = op;
         setTimeout(() => {
-            stage.appendChild(operator);
+            const e = document.createElement('span');
+            e.className = 'anim-operator';
+            e.innerText = '=';
+            stage.appendChild(e);
             
-            setTimeout(() => {
-                if(op === '+') {
-                    for(let i=0; i<b; i++) {
-                        const icon = document.createElement('span');
-                        icon.className = 'anim-icon';
-                        icon.textContent = randomAnimal;
-                        stage.appendChild(icon);
-                    }
-                    setTimeout(() => {
-                        const equal = document.createElement('span');
-                        equal.className = 'anim-operator';
-                        equal.textContent = '=';
-                        stage.appendChild(equal);
+            for(let i=0; i<answer; i++) {
+                const s = document.createElement('span');
+                s.className = 'anim-icon';
+                s.textContent = icon;
+                stage.appendChild(s);
+            }
+            speakText(`${a}${op=='+'?'加':'减'}${b}等于${answer}`);
+        }, 600);
+    }, 500);
+};
 
-                        for(let i=0; i<answer; i++) {
-                            const icon = document.createElement('span');
-                            icon.className = 'anim-icon';
-                            icon.textContent = randomAnimal;
-                            stage.appendChild(icon);
-                        }
+// ==================== 奇偶数模块 ====================
+let parityScore = 0;
+let currentParityCount = 5;
+const parityEmojis = ['🐰','🐶','🐱','🐻','🐼','🦊','🐸','🐨'];
 
-                        speakText(`${a}加${b}等于${answer}，合起来一共有${answer}个${randomAnimal}！`);
-                        flashElement(stage);
-                    }, 800);
-                } else {
-                    for(let i=0; i<b; i++) {
-                        const icon = firstGroup[i];
-                        setTimeout(() => {
-                            icon.className = 'anim-icon-removed';
-                        }, i * 200);
-                    }
-                    setTimeout(() => {
-                        const equal = document.createElement('span');
-                        equal.className = 'anim-operator';
-                        equal.textContent = '=';
-                        stage.appendChild(equal);
+function refreshParityQuestion() {
+    currentParityCount = randomInt(1,10);
+    const box = document.getElementById('parityIcons');
+    box.innerHTML = '';
+    const icon = parityEmojis[randomInt(0, parityEmojis.length-1)];
+    for(let i=0; i<currentParityCount; i++) {
+        const s = document.createElement('span');
+        s.className = 'object-emoji';
+        s.textContent = icon;
+        box.appendChild(s);
+    }
+    document.getElementById('parityQuestion').innerText = `这里有${currentParityCount}个小动物，单数还是双数？`;
+    document.getElementById('pairAnimation').innerHTML = '';
+}
 
-                        for(let i=0; i<answer; i++) {
-                            const icon = document.createElement('span');
-                            icon.className = 'anim-icon';
-                            icon.textContent = randomAnimal;
-                            stage.appendChild(icon);
-                        }
-
-                        speakText(`${a}减${b}等于${answer}，拿走${b}个，还剩${answer}个${randomAnimal}！`);
-                        flashElement(stage);
-                    }, b * 200 + 500);
-                }
-            }, 600);
-        }, 800);
+function renderPairAnimation(count) {
+    const box = document.getElementById('pairAnimation');
+    box.innerHTML = '';
+    const icon = parityEmojis[randomInt(0, parityEmojis.length-1)];
+    const isOdd = count%2!==0;
+    const pairs = Math.floor(count/2);
+    
+    for(let i=0; i<pairs; i++) {
+        const g = document.createElement('div');
+        g.className = 'pair-group highlight';
+        const a = document.createElement('span'); a.textContent = icon;
+        const b = document.createElement('span'); b.textContent = icon;
+        const l = document.createElement('div');
+        l.className = 'pair-label';
+        l.innerText = '一对';
+        g.appendChild(a); g.appendChild(b); g.appendChild(l);
+        box.appendChild(g);
     }
     
-    document.getElementById('animateMathBtn')?.addEventListener('click', animateMath);
-    
-    // ==================== 模块4：奇偶数学习 ====================
-    let parityScore = 0, parityLock = false;
-    let currentParityCount = 0;
-    const parityEmojis = ['🐰', '🐶', '🐱', '🐻', '🐼', '🦊', '🐸', '🐨', '🐮', '🦁'];
-    
-    function generateParityQuestion() {
-        currentParityCount = randomInt(1, 10);
-        return currentParityCount;
+    if(isOdd) {
+        const g = document.createElement('div');
+        g.className = 'pair-group highlight';
+        const s = document.createElement('span');
+        s.textContent = icon;
+        const l = document.createElement('div');
+        l.className = 'pair-label';
+        l.innerText = '落单';
+        g.appendChild(s); g.appendChild(l);
+        box.appendChild(g);
+        speakText('有落单的，是单数！');
+    } else {
+        speakText('都有好朋友，是双数！');
     }
-    
-    function renderParityIcons(count) {
-        const container = document.getElementById('parityIcons');
-        if (!container) return;
-        container.innerHTML = '';
-        const randomEmoji = parityEmojis[Math.floor(Math.random() * parityEmojis.length)];
-        for(let i=0; i<count; i++) {
-            const span = document.createElement('span');
-            span.className = 'object-emoji';
-            span.textContent = randomEmoji;
-            span.addEventListener('click', () => {
-                flashElement(span);
-                speakText(`这里总共有${count}个${randomEmoji}哦`);
-            });
-            container.appendChild(span);
-        }
-        document.getElementById('parityQuestion').innerHTML = `✨ 这里有${count}个小动物，是单数还是双数？`;
-    }
-    
-    function renderPairAnimation(count) {
-        const container = document.getElementById('pairAnimation');
-        if (!container) return;
-        container.innerHTML = '';
-        
-        const randomEmoji = parityEmojis[Math.floor(Math.random() * parityEmojis.length)];
-        let hasLone = count % 2 !== 0;
-        let totalPairs = Math.floor(count / 2);
-        
-        for(let i=0; i<totalPairs; i++) {
-            const pairGroup = document.createElement('div');
-            pairGroup.className = 'pair-group';
-            
-            const icon1 = document.createElement('span');
-            icon1.textContent = randomEmoji;
-            const icon2 = document.createElement('span');
-            icon2.textContent = randomEmoji;
-            
-            pairGroup.appendChild(icon1);
-            pairGroup.appendChild(icon2);
-            
-            const label = document.createElement('div');
-            label.className = 'pair-label';
-            label.textContent = '一对';
-            pairGroup.appendChild(label);
-            
-            container.appendChild(pairGroup);
-            
-            setTimeout(() => {
-                pairGroup.classList.add('highlight');
-                setTimeout(() => pairGroup.classList.remove('highlight'), 500);
-            }, i * 300);
-        }
-        
-        if(hasLone) {
-            const loneGroup = document.createElement('div');
-            loneGroup.className = 'pair-group highlight';
-            
-            const icon = document.createElement('span');
-            icon.textContent = randomEmoji;
-            loneGroup.appendChild(icon);
-            
-            const label = document.createElement('div');
-            label.className = 'pair-label';
-            label.textContent = '落单';
-            loneGroup.appendChild(label);
-            
-            setTimeout(() => {
-                container.appendChild(loneGroup);
-                speakText('有一个小动物没有好朋友，所以是单数！');
-            }, totalPairs * 300 + 500);
-        } else {
-            setTimeout(() => {
-                speakText('所有小动物都有好朋友，所以是双数！');
-            }, totalPairs * 300 + 500);
-        }
-    }
-    
-    function handleParityAnswer(selectedType) {
-        if(parityLock) return;
-        parityLock = true;
-        const isEven = currentParityCount % 2 === 0;
-        const isCorrect = (selectedType === 'even' && isEven) || (selectedType === 'odd' && !isEven);
-        const feedbackDiv = document.getElementById('parityFeedback');
-        
-        if(isCorrect) {
+}
+
+document.querySelectorAll('.parity-btn').forEach(btn => {
+    btn.onclick = function() {
+        const wantOdd = this.dataset.type === 'odd';
+        const isOdd = currentParityCount%2!==0;
+        if( (wantOdd && isOdd) || (!wantOdd && !isOdd) ) {
             parityScore++;
             document.getElementById('parityScore').innerText = parityScore;
-            const typeText = isEven ? '双数（偶数）' : '单数（奇数）';
-            feedbackDiv.innerHTML = `🎉🎉 答对啦！${currentParityCount}是${typeText}！ 🎉🎉`;
-            flashElement(document.getElementById('parityIcons'));
-            speakText(`太棒了！${currentParityCount}是${typeText}，你真聪明！`);
-            setTimeout(() => renderPairAnimation(currentParityCount), 800);
-            setTimeout(() => {
-                refreshParityQuestion();
-                parityLock = false;
-            }, 3000);
+            speakText('答对啦！');
+            renderPairAnimation(currentParityCount);
+            setTimeout(refreshParityQuestion, 2500);
         } else {
-            const correctType = isEven ? '双数（偶数）' : '单数（奇数）';
-            feedbackDiv.innerHTML = `🤔 不对哦，${currentParityCount}其实是${correctType}！`;
-            flashElement(feedbackDiv);
-            speakText(`不对哦，${currentParityCount}不是${selectedType === 'even' ? '双数' : '单数'}，是${correctType}哦！`);
-            setTimeout(() => renderPairAnimation(currentParityCount), 1000);
-            setTimeout(() => {
-                parityLock = false;
-            }, 3000);
+            speakText('再想想哦');
         }
+    };
+});
+
+document.getElementById('newParityBtn').onclick = refreshParityQuestion;
+document.getElementById('teachParityBtn').onclick = function() {
+    speakText('两个两个找朋友，都找到是双数，有落单是单数！');
+    renderPairAnimation(currentParityCount);
+};
+
+// ==================== 讲解弹窗（已补全所有内容）====================
+const explainModal = document.getElementById('explainModal');
+const explainTitle = document.getElementById('explainTitle');
+const explainText = document.getElementById('explainText');
+
+const explainContents = {
+    number: {
+        title: "🔢 认识数字小课堂",
+        text: "数字可以表示数量哦！数字1就代表1个小动物，数字2就代表2个小动物，点击左右箭头可以学习1到10的数字和数量。"
+    },
+    match: {
+        title: "🎈 数量配对小课堂",
+        text: "小朋友，仔细数一数画面上有多少个可爱的物品，然后点击正确的数字答案，多练习就能越数越快啦！"
+    },
+    math: {
+        title: "🧮 加减法小课堂",
+        text: "加法就是把东西合起来变多，减法就是拿走一些变少。点击动画按钮可以看可爱的小动物演示计算过程哦！"
+    },
+    parity: {
+        title: "🌈 奇偶数小课堂",
+        text: "两个两个找好朋友，全部都能找到配对的就是双数（偶数）；有一个小动物落单找不到朋友的就是单数（奇数）。"
     }
-    
-    function refreshParityQuestion() {
-        const count = generateParityQuestion();
-        renderParityIcons(count);
-        document.getElementById('pairAnimation').innerHTML = '';
-        document.getElementById('parityFeedback').innerHTML = '🤗 数一数，然后告诉我是单数还是双数~';
-    }
-    
-    document.querySelectorAll('.parity-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const type = btn.getAttribute('data-type');
-            handleParityAnswer(type);
-        });
-    });
-    
-    document.getElementById('newParityBtn')?.addEventListener('click', () => {
-        if(!parityLock) {
-            refreshParityQuestion();
-            speakText('来试试新题目吧！');
-        }
-    });
-    
-    refreshParityQuestion();
-    
-    window.addEventListener('load', () => {
-        initVoice().catch(err => console.log('语音初始化失败:', err));
-        hideAllModules();
-        mainMenuDiv.style.display = 'block';
-    });
+};
+
+document.querySelectorAll('.explain-btn').forEach(btn => {
+    btn.onclick = () => {
+        const moduleId = btn.dataset.module;
+        const content = explainContents[moduleId];
+        explainTitle.innerText = content.title;
+        explainText.innerText = content.text;
+        explainModal.classList.add('show');
+        speakText(content.text);
+    };
+});
+document.querySelector('.close-explain').onclick = () => {
+    explainModal.classList.remove('show');
+};
+
+// 初始化
+renderNumberAndQuantity();
+renderMatchGame();
+renderMathQuestion();
+refreshParityQuestion();
 </script>
 </body>
 </html>
